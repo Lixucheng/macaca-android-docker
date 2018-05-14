@@ -53,7 +53,6 @@ RUN apt-get update && \
     apt-get install -y tmux && \
     apt-get autoremove -y && \
     apt-get clean
-RUN ssh-keygen -y
 
 # Install packages needed for android sdk tools
 RUN dpkg --add-architecture i386 && \
