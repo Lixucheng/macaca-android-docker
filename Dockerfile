@@ -50,8 +50,10 @@ RUN apt-get update && \
     apt-get install -y net-tools iputils-ping dnsutils && \
     apt-get install -y python-dev python-pip  && \
     apt-get install -y apt-utils usbutils locales udev && \
+    apt-get install -y tmux && \
     apt-get autoremove -y && \
     apt-get clean
+RUN ssh-keygen -y
 
 # Install packages needed for android sdk tools
 RUN dpkg --add-architecture i386 && \
@@ -93,14 +95,15 @@ ENV PATH=$GRADLE_HOME/bin:$PATH
 RUN curl -o gradle-4.2-all.zip -L https://services.gradle.org/distributions/gradle-4.2-all.zip && unzip gradle-4.2-all.zip -d /usr/local > /dev/null
 
 # Nodejs Environment Path
-ENV PATH=$PATH:/opt/node-v6.11.4-linux-x64/bin
-RUN curl -o node-v6.11.4-linux-x64.tar.xz https://nodejs.org/dist/v6.11.4/node-v6.11.4-linux-x64.tar.xz && tar -C /opt -Jxvf node-v6.11.4-linux-x64.tar.xz > /dev/null
+ENV PATH=$PATH:/opt/node-v9.8.0-linux-x64/bin
+RUN curl -o node-v9.8.0-linux-x64.tar.xz https://nodejs.org/dist/v9.8.0/node-v9.8.0-linux-x64.tar.xz && tar -C /opt -Jxvf node-v9.8.0-linux-x64.tar.xz > /dev/null
 
 RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
 RUN export CHROMEDRIVER_CDNURL=http://npm.taobao.org/mirrors/chromedriver/
 RUN cnpm i -g macaca-cli
 RUN cnpm i -g macaca-android
 RUN cnpm i -g nosmoke
+RUN cnpm i -g pm2
 RUN macaca -v
 RUN macaca doctor
 
@@ -119,5 +122,7 @@ ADD entrypoint.sh /entrypoint.sh
 ADD kvmconfig.sh /kvmconfig.sh
 RUN chmod +x /entrypoint.sh
 RUN chmod +x /kvmconfig.sh
+
+COPY Users/lixucheng/Desktop/learn/macaca-nodejs-boilerplate /root/script
 
 # ENTRYPOINT ["/entrypoint.sh"]
