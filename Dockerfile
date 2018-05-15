@@ -122,6 +122,4 @@ ADD kvmconfig.sh /kvmconfig.sh
 RUN chmod +x /entrypoint.sh
 RUN chmod +x /kvmconfig.sh
 
-COPY Users/lixucheng/Desktop/learn/macaca-nodejs-boilerplate /root/script
-
 # ENTRYPOINT ["/entrypoint.sh"]
