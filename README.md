@@ -17,6 +17,7 @@ $ docker build . -t="macacajs/macaca-android-docker"
 $ docker run -it --entrypoint="/bin/bash" macacajs/macaca-android-docker
 ```
 
+下面这个不跑也可以
 ```bash
 $ android update sdk --proxy-host mirrors.neusoft.edu.cn --proxy-port 80 -s
 ```
