@@ -103,6 +103,7 @@ RUN cnpm i -g macaca-cli
 RUN cnpm i -g macaca-android
 RUN cnpm i -g nosmoke
 RUN cnpm i -g pm2
+RUN cnpm i -g yarn
 RUN macaca -v
 RUN macaca doctor
 
