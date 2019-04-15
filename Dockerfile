@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-MAINTAINER Samuel "samuel.zhao.yue@live.com"
+MAINTAINER Samuel "lixucheng@bytedance.com"
 
 # Specially for SSH access and port redirection
 ENV ROOTPASSWORD macaca
@@ -88,14 +88,14 @@ RUN ( sleep 4 && while [ 1 ]; do sleep 1; echo y; done ) | android update sdk --
 # RUN which android
 
 # Gradle 4.2
-ENV GRADLE_HOME=/usr/local/gradle-4.2
+ENV GRADLE_HOME=/usr/local/gradle-4.8
 ENV PATH=$GRADLE_HOME/bin:$PATH
 
-RUN curl -o gradle-4.2-all.zip -L https://services.gradle.org/distributions/gradle-4.2-all.zip && unzip gradle-4.2-all.zip -d /usr/local > /dev/null
+RUN curl -o gradle-4.8-all.zip -L https://services.gradle.org/distributions/gradle-4.8-all.zip && unzip gradle-4.8-all.zip -d /usr/local > /dev/null
 
 # Nodejs Environment Path
-ENV PATH=$PATH:/opt/node-v9.8.0-linux-x64/bin
-RUN curl -o node-v9.8.0-linux-x64.tar.xz https://nodejs.org/dist/v9.8.0/node-v9.8.0-linux-x64.tar.xz && tar -C /opt -Jxvf node-v9.8.0-linux-x64.tar.xz > /dev/null
+ENV PATH=$PATH:/opt/node-v11.9.0-linux-x64/bin
+RUN curl -o node-v11.9.0-linux-x64.tar.xz https://nodejs.org/dist/v11.9.0/node-v11.9.0-linux-x64.tar.xz && tar -C /opt -Jxvf node-v11.9.0-linux-x64.tar.xz > /dev/null
 
 RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
 RUN export CHROMEDRIVER_CDNURL=http://npm.taobao.org/mirrors/chromedriver/
